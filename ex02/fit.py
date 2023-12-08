@@ -53,18 +53,23 @@ def fit_(x, y, theta, alpha, max_iter):
         grad = gradient(x, y, theta)
         if grad is None:
             return None
+        # grad becomes smaller and smaller when theta is close to minimum
         theta = theta - alpha * grad
 
     return theta
 
 
-x = np.array([
-    [12.4956442], [21.5007972], [31.5527382], [48.9145838], [57.5088733]
-    ])
-y = np.array([
-    [37.4013816], [36.1473236], [45.7655287], [46.6793434], [59.5585554]
-    ])
-theta = np.array([1, 1]).reshape((-1, 1))
-theta1 = fit_(x, y, theta, alpha=5e-8, max_iter=1500000)
-print(theta1)
-print(predict(x, theta1))
+output_file = "results/ex02/result_ex02.txt"
+
+with open(output_file, "w") as file:
+
+    x = np.array([
+        [12.4956442], [21.5007972], [31.5527382], [48.9145838], [57.5088733]
+        ])
+    y = np.array([
+        [37.4013816], [36.1473236], [45.7655287], [46.6793434], [59.5585554]
+        ])
+    theta = np.array([1, 1]).reshape((-1, 1))
+    theta1 = fit_(x, y, theta, alpha=5e-8, max_iter=1500000)
+    print(theta1, file=file)
+    print(predict(x, theta1), file=file)

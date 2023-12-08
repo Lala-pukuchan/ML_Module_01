@@ -38,18 +38,22 @@ def gradient(x, y, theta):
     return gradient
 
 
-x = np.array(
-    [12.4956442, 21.5007972, 31.5527382, 48.9145838, 57.5088733]
-    ).reshape(
-    (-1, 1)
-)
-y = np.array(
-    [37.4013816, 36.1473236, 45.7655287, 46.6793434, 59.5585554]
-    ).reshape(
-    (-1, 1)
-)
+output_file = "results/ex01/result_ex01.txt"
 
-theta1 = np.array([2, 0.7]).reshape((-1, 1))
-print(gradient(x, y, theta1))
-theta2 = np.array([1, -0.4]).reshape((-1, 1))
-print(gradient(x, y, theta2))
+with open(output_file, "w") as file:
+
+    x = np.array(
+        [12.4956442, 21.5007972, 31.5527382, 48.9145838, 57.5088733]
+        ).reshape(
+        (-1, 1)
+    )
+    y = np.array(
+        [37.4013816, 36.1473236, 45.7655287, 46.6793434, 59.5585554]
+        ).reshape(
+        (-1, 1)
+    )
+
+    theta1 = np.array([2, 0.7]).reshape((-1, 1))
+    print(gradient(x, y, theta1), file=file)
+    theta2 = np.array([1, -0.4]).reshape((-1, 1))
+    print(gradient(x, y, theta2), file=file)

@@ -31,7 +31,7 @@ def simple_gradient(x, y, theta):
     ):
         return None
 
-    # Gradient computation
+    # Average steepness of the partial derivative curve
     m = x.shape[0]
     gradient = np.zeros((2, 1))
 
@@ -45,21 +45,23 @@ def simple_gradient(x, y, theta):
     return gradient
 
 
-x = np.array(
-    [12.4956442, 21.5007972, 31.5527382, 48.9145838, 57.5088733]
-    ).reshape(
+output_file = "results/ex00/result_ex00.txt"
+
+with open(output_file, "w") as file:
+
+    x = np.array(
+        [12.4956442, 21.5007972, 31.5527382, 48.9145838, 57.5088733]
+        ).reshape(
+            (-1, 1)
+        )
+    y = np.array(
+        [37.4013816, 36.1473236, 45.7655287, 46.6793434, 59.5585554]
+        ).reshape(
         (-1, 1)
     )
-y = np.array(
-    [37.4013816, 36.1473236, 45.7655287, 46.6793434, 59.5585554]
-    ).reshape(
-    (-1, 1)
-)
 
-theta1 = np.array([2, 0.7]).reshape((-1, 1))
-simple_gradient(x, y, theta1)
-print(simple_gradient(x, y, theta1))
+    theta1 = np.array([2, 0.7]).reshape((-1, 1))
+    print("gradient with theta1: \n", simple_gradient(x, y, theta1), file=file)
 
-theta2 = np.array([1, -0.4]).reshape((-1, 1))
-simple_gradient(x, y, theta2)
-print(simple_gradient(x, y, theta2))
+    theta2 = np.array([1, -0.4]).reshape((-1, 1))
+    print("gradient with theta2: \n", simple_gradient(x, y, theta2), file=file)

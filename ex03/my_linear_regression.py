@@ -1,5 +1,6 @@
 import numpy as np
 
+
 class MyLinearRegression:
     """
     Description:
@@ -53,19 +54,12 @@ class MyLinearRegression:
             return None
         return (y_hat - y) ** 2
 
-    #def loss_(self, y, y_hat):
-    #    if y.shape != y_hat.shape:
-    #        return None
-    #    m = y.shape[0]
-    #    return (1 / (2 * m)) * np.sum((y_hat - y) ** 2)
-    
     @staticmethod
     def loss_(y, y_hat):
         if y.shape != y_hat.shape:
             return None
         m = y.shape[0]
-        return (1 / (2 * m)) * np.sum((y_hat - y) ** 2)
-
+        return (1 / (m)) * np.sum((y_hat - y) ** 2)
 
     @staticmethod
     def mse_(y, y_hat):

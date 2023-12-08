@@ -1,8 +1,8 @@
 import numpy as np
 import pandas as pd
+import matplotlib.pyplot as plt
 from ex03.my_linear_regression import MyLinearRegression as MyLR
 from sklearn.metrics import mean_squared_error
-import matplotlib.pyplot as plt
 
 
 output_file = "results/ex04/result_ex04.txt"
@@ -18,12 +18,14 @@ with open(output_file, "w") as file:
     Y_model1 = linear_model1.predict_(Xpill)
     Y_model2 = linear_model2.predict_(Xpill)
 
-    print("--- test1 ---", file=file)
-    print("mse of mine:", MyLR.mse_(Yscore, Y_model1), file=file)
-    print("mse of scikit-learn:", mean_squared_error(Yscore, Y_model1), file=file)
-    print("--- test2 ---", file=file)
-    print("mse of mine:", MyLR.mse_(Yscore, Y_model2), file=file)
-    print("mse of scikit-learn:", mean_squared_error(Yscore, Y_model2), file=file)
+    print("--- MSE of Y_model1 ---", file=file)
+    print("mse of mine        :", MyLR.mse_(Yscore, Y_model1), file=file)
+    print("mse of scikit-learn:",
+          mean_squared_error(Yscore, Y_model1), file=file)
+    print("--- MSE of Y_model2 ---", file=file)
+    print("mse of mine        :", MyLR.mse_(Yscore, Y_model2), file=file)
+    print("mse of scikit-learn:",
+          mean_squared_error(Yscore, Y_model2), file=file)
 
     plt.figure()
     plt.scatter(Xpill, Yscore, color="blue", label="Actual")
@@ -35,10 +37,9 @@ with open(output_file, "w") as file:
     plt.legend()
     plt.savefig("results/ex04/figure_V1.png")
 
-#    theta1_values = np.linspace(-10, 10, 100)
-#    theta0_constants = [0, 10, 20, 30, 40, 50]
-    theta1_values = np.linspace(-10, 10, 100)  # Theta1 values between -14 and -4
-    theta0_constants = np.linspace(0, 50, 6) 
+    n = 6
+    theta0_constants = np.linspace(80, 96, n)
+    theta1_values = np.linspace(-14, -4, 100)
     plt.figure()
     for theta0 in theta0_constants:
         loss_values = []
@@ -54,4 +55,5 @@ with open(output_file, "w") as file:
     plt.ylabel('Loss Function J(θ)')
     plt.title('Evolution of Loss Function J as a function of θ1')
     plt.legend()
-    plt.savefig('figure_V2.png')
+    plt.savefig("results/ex04/figure_V2.png")
+    plt.close()
