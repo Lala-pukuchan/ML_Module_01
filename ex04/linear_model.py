@@ -34,3 +34,24 @@ with open(output_file, "w") as file:
     plt.title("Space Driving Score vs Quantity of Blue Pills")
     plt.legend()
     plt.savefig("results/ex04/figure_V1.png")
+
+#    theta1_values = np.linspace(-10, 10, 100)
+#    theta0_constants = [0, 10, 20, 30, 40, 50]
+    theta1_values = np.linspace(-10, 10, 100)  # Theta1 values between -14 and -4
+    theta0_constants = np.linspace(0, 50, 6) 
+    plt.figure()
+    for theta0 in theta0_constants:
+        loss_values = []
+        for theta1 in theta1_values:
+            linear_model1.thetas = np.array([[theta0], [theta1]])    
+            Y_model1 = linear_model1.predict_(Xpill)
+            loss = linear_model1.loss_(Yscore, Y_model1)
+            loss_values.append(loss)
+
+        plt.plot(theta1_values, loss_values, label=f'θ0={theta0}')
+    
+    plt.xlabel('θ1')
+    plt.ylabel('Loss Function J(θ)')
+    plt.title('Evolution of Loss Function J as a function of θ1')
+    plt.legend()
+    plt.savefig('figure_V2.png')
