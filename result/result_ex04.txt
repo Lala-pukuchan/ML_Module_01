@@ -1,6 +1,0 @@
---- test1 ---
-mse of mine: 57.603042857142825
-mse of scikit-learn: 57.603042857142825
---- test2 ---
-mse of mine: 232.16344285714285
-mse of scikit-learn: 232.16344285714285
