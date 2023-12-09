@@ -17,3 +17,4 @@ python3 ex02/fit.py
 python3 ex03/my_linear_regression.py
 python3 ex04/linear_model.py
 python3 ex05/z_score.py
+python3 ex06/minmax.py

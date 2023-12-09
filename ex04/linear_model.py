@@ -44,13 +44,13 @@ with open(output_file, "w") as file:
     for theta0 in theta0_constants:
         loss_values = []
         for theta1 in theta1_values:
-            linear_model1.thetas = np.array([[theta0], [theta1]])    
+            linear_model1.thetas = np.array([[theta0], [theta1]])
             Y_model1 = linear_model1.predict_(Xpill)
             loss = linear_model1.loss_(Yscore, Y_model1)
             loss_values.append(loss)
 
         plt.plot(theta1_values, loss_values, label=f'θ0={theta0}')
-    
+
     plt.xlabel('θ1')
     plt.ylabel('Loss Function J(θ)')
     plt.title('Evolution of Loss Function J as a function of θ1')
