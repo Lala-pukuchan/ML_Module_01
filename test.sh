@@ -11,6 +11,9 @@ do
     fi
 done
 
+newPath='echo getcwd()' + /ex03
+export PYTHONPATH="/mnt/nfs/homes/rukobaya/Desktop/ML_Module_01/ex03:$PYTHONPATH"
+
 python3 ex00/gradient.py
 python3 ex01/vec_gradient.py
 python3 ex02/fit.py

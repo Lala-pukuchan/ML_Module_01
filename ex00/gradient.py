@@ -31,15 +31,19 @@ def simple_gradient(x, y, theta):
     ):
         return None
 
-    # Average steepness of the partial derivative curve
+    # number of sample
     m = x.shape[0]
+
+    # partial derivative of theta0 and theta1
     gradient = np.zeros((2, 1))
 
+    # partial derivative for each points
     for i in range(m):
         y_hat = theta[0] + theta[1] * x[i]
-        gradient[0] += (y_hat - y[i]) * 1
+        gradient[0] += (y_hat - y[i])
         gradient[1] += (y_hat - y[i]) * x[i]
 
+    # devide with m
     gradient /= m
 
     return gradient
@@ -60,8 +64,12 @@ with open(output_file, "w") as file:
         (-1, 1)
     )
 
+    print("---test.1---", file=file)
     theta1 = np.array([2, 0.7]).reshape((-1, 1))
     print("gradient with theta1: \n", simple_gradient(x, y, theta1), file=file)
+    print("expected            : \n", np.array([[-19.0342574], [-586.66875564]]), file=file)
 
+    print("\n---test.2---", file=file)
     theta2 = np.array([1, -0.4]).reshape((-1, 1))
     print("gradient with theta2: \n", simple_gradient(x, y, theta2), file=file)
+    print("expected            : \n", np.array([[-57.86823748], [-2230.12297889]]), file=file)
