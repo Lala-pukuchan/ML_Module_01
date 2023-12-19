@@ -11,9 +11,16 @@ do
     fi
 done
 
-newPath='echo getcwd()' + /ex03
-export PYTHONPATH="/mnt/nfs/homes/rukobaya/Desktop/ML_Module_01/ex03:$PYTHONPATH"
+# get current directory
+currentDir=$(pwd)
 
+# Append the subdirectory to the current directory
+newPath="$currentDir/ex03"
+
+# Export the new path to PYTHONPATH
+export PYTHONPATH="$newPath:$PYTHONPATH"
+
+# execute python script
 python3 ex00/gradient.py
 python3 ex01/vec_gradient.py
 python3 ex02/fit.py
