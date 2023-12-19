@@ -68,11 +68,11 @@ with open(output_file, "w") as file:
     theta = np.array([1, 1]).reshape((-1, 1))
     theta1 = fit_(x, y, theta, alpha=5e-8, max_iter=1500000)
 
-    print("\n---fit---")
+    print("---fit---", file=file)
     print("fit theta1: \n", theta1, file=file)
     print("expected theta1: \n", np.array([[1.40709365], [1.1150909]]), file=file)
 
-    print("\n---predict---")
+    print("\n---predict---", file=file)
     print("predict: \n", predict(x, theta1), file=file)
     print(
         "expected predict: \n",
