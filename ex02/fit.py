@@ -49,6 +49,7 @@ def fit_(x, y, theta, alpha, max_iter):
     if x.shape[0] != y.shape[0] or theta.shape != (2, 1):
         return None
 
+    # updating theta for the count of max_iter
     for _ in range(max_iter):
         grad = gradient(x, y, theta)
         if grad is None:
@@ -62,14 +63,21 @@ def fit_(x, y, theta, alpha, max_iter):
 output_file = "results/ex02/result_ex02.txt"
 
 with open(output_file, "w") as file:
-
-    x = np.array([
-        [12.4956442], [21.5007972], [31.5527382], [48.9145838], [57.5088733]
-        ])
-    y = np.array([
-        [37.4013816], [36.1473236], [45.7655287], [46.6793434], [59.5585554]
-        ])
+    x = np.array([[12.4956442], [21.5007972], [31.5527382], [48.9145838], [57.5088733]])
+    y = np.array([[37.4013816], [36.1473236], [45.7655287], [46.6793434], [59.5585554]])
     theta = np.array([1, 1]).reshape((-1, 1))
     theta1 = fit_(x, y, theta, alpha=5e-8, max_iter=1500000)
-    print(theta1, file=file)
-    print(predict(x, theta1), file=file)
+
+    print("\n---fit---")
+    print("fit theta1: \n", theta1, file=file)
+    print("expected theta1: \n", np.array([[1.40709365], [1.1150909]]), file=file)
+
+    print("\n---predict---")
+    print("predict: \n", predict(x, theta1), file=file)
+    print(
+        "expected predict: \n",
+        np.array(
+            [[15.3408728], [25.38243697], [36.59126492], [55.95130097], [65.53471499]]
+        ),
+        file=file,
+    )
